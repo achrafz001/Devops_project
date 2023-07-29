@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myservice
+      tier: backend
+      track: stable
+  template:
+    metadata:
+      labels:
+        app: myservice
+        tier: backend
+        track: stable
+    spec:
+      containers:
+      - name: back
+        image: backk
+        ports:
+        - containerPort: 8000
+      imagePullSecrets:
+      - name: regcred
